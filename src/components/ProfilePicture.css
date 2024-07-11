@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=YourChosenFont&display=swap"); /* Import your chosen font */
+
+.profile-border {
+  background: linear-gradient(135deg, #00ffee 0%, #001f3f 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0, 255, 238, 0.5), 0 0 60px rgba(0, 255, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Adjust this for darker overlay */
+  z-index: 1;
+}
+
+.profile-border img {
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(0, 255, 238, 0.6);
+  z-index: 3;
+}
+
+.icon-hover {
+  border: 2px solid #00ffee;
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+  color: #00ffee;
+}
+
+.icon-hover:hover {
+  background-color: #00ffee;
+  color: #fff; /* Ensure the icon color is visible against the filled background */
+}
+
+@keyframes textAppear {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-text {
+  animation: textAppear 3s infinite;
+}
+
+/* Apply your chosen font */
+body {
+  font-family: "YourChosenFont", sans-serif;
+}

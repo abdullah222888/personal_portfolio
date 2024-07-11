@@ -1,0 +1,79 @@
+.contact {
+  background-color: var(--bg-color);
+}
+
+.contact h2 {
+  margin-bottom: 2rem;
+  color: white;
+  font-size: 2rem; /* Reduce the font size */
+}
+
+.contact form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem; /* Reduce the gap between form groups */
+  margin: 3rem auto; /* Reduce the overall margin */
+  text-align: center;
+}
+
+.contact form .input-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+  width: 100%;
+  padding: 1.5rem; /* Reduce the padding */
+  font-size: 1rem; /* Reduce the font size */
+  color: white;
+  background: var(--bg-color);
+  border-radius: 1rem; /* Reduce the border radius */
+  border: 2px solid #00ffee;
+  margin: 1rem 0; /* Reduce the margin */
+  resize: none;
+}
+
+.contact form .btn {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem; /* Adjust the padding for a smaller button */
+  font-size: 1rem; /* Reduce the font size */
+  border-radius: 1rem; /* Suitable border-radius */
+  border: 2px solid #00ffee; /* Border color */
+  background: var(--bg-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.contact form .btn:hover {
+  background: #00ffee; /* Background color change on hover */
+  color: var(--bg-color); /* Text color change on hover */
+  transform: scale(1.05); /* Slightly increase the button size on hover */
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+  .contact form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact form .input-box {
+    width: 100%;
+  }
+
+  .contact form .input-box input,
+  .contact form textarea {
+    width: 90%; /* Adjust width to fit within mobile screen */
+    font-size: 0.875rem; /* Slightly reduce the font size for mobile */
+  }
+
+  .contact form .btn {
+    width: 90%; /* Adjust button width for mobile */
+    font-size: 0.875rem; /* Slightly reduce the font size for mobile */
+    padding: 0.75rem 1.5rem; /* Adjust padding for a smaller button */
+  }
+}
