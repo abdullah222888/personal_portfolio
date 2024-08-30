@@ -1,0 +1,26 @@
+.skill-logo {
+  width: 55px;
+  height: 55px;
+  transition: transform 0.3s ease;
+}
+
+.skill-card {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-motion:hover .skill-card {
+  background-color: #e0e0e0; /* Subtle hover color */
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.card-motion:hover .skill-logo {
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .skill-logo {
+    width: 45px;
+    height: 45px;
+  }
+}

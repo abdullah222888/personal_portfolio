@@ -1,0 +1,25 @@
+.icon-hover {
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.icon-hover:hover {
+  color: #00ffee;
+  transform: scale(1.1);
+}
+
+.animate-text {
+  display: inline-block;
+  animation: fadeInUp 1s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

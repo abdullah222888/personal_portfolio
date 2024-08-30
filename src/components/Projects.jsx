@@ -7,44 +7,63 @@ import {
   CardContent,
   Typography,
   Button,
+  Box,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { motion } from "framer-motion";
 
 const ProjectCard = styled(Card)(({ theme }) => ({
+  position: "relative",
+  width: "100%", // Full width of the container
+  maxWidth: "540px", // Maximum width for larger screens
   borderRadius: "10px",
+  overflow: "hidden",
   borderColor: "#00ffee",
   borderWidth: "3px",
   borderStyle: "solid",
   backgroundColor: theme.palette.background.paper,
-  transition: "background-color 0.3s ease",
+  display: "flex",
+  flexDirection: "column", // Stack image and content vertically
+  transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "#fff",
+    transform: "scale(1.05)",
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
   },
-}));
-
-const ProjectCardContent = styled(CardContent)(({ theme }) => ({
-  backgroundColor: "black",
-  color: "white",
-}));
-
-const ProjectButton = styled(Button)(({ theme }) => ({
-  borderRadius: "10px",
-  backgroundColor: "#00ffee",
-  color: "black",
-  transition: "background-color 0.3s ease",
-  "&:hover": {
-    backgroundColor: "#00ffee",
-    color: "black",
-  },
-  display: "block",
-  margin: "20px auto 0",
 }));
 
 const ProjectImage = styled(CardMedia)({
-  height: 0,
-  paddingTop: "56.25%", // 16:9 aspect ratio
-  backgroundSize: "contain", // Ensure the image fits within the card without cropping
+  height: "200px", // Adjust height to fit within the card
+  width: "100%",
+  objectFit: "cover", // Ensure the image covers the card area without distortion
 });
+
+const ProjectCardContent = styled(CardContent)(({ theme }) => ({
+  padding: "1rem",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
+  color: "white",
+  opacity: 0, // Initially hidden
+  transition: "opacity 0.3s ease-in-out",
+  position: "absolute",
+  bottom: 0,
+  width: "100%",
+  height: "100%", // Ensure content covers the full card height
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end", // Align content at the bottom
+  "&:hover": {
+    opacity: 1, // Show on hover
+  },
+}));
+
+const ProjectButton = styled(Button)(({ theme }) => ({
+  marginRight: "10px",
+  backgroundColor: "#00ffee",
+  color: "black",
+  "&:hover": {
+    backgroundColor: "#00c6c6",
+    color: "black",
+  },
+}));
 
 const Projects = () => {
   const projectData = [
@@ -52,86 +71,71 @@ const Projects = () => {
       image: "logo_transparent.png",
       name: "INTERIOR-CROWD",
       description:
-        "This is a detailed description for Project 1. Here you can add more information about the project, its objectives, outcomes, and any other relevant details.",
+        "An innovative platform featuring a diverse selection of designers and products to enhance interior designs.",
       link: "https://github.com/abdullah222888/zgolli_fe",
     },
     {
       image: "rafflepro.png",
       name: "RAFFLE-MANIA",
       description:
-        "This is a detailed description for Project 2. Include specifics about the design, the process, and any challenges faced during the project.",
+        "An engaging e-commerce app with a sleek frontend using HTML, CSS, JavaScript, and Material-UI.",
       link: "https://github.com/abdullah222888/Raffle_mania",
     },
     {
       image: "To-DO-list.png",
       name: "TO-DO-LIST",
       description:
-        "This is a detailed description for Project 3. You can talk about the materials used, the inspiration behind the project, and the final result.",
+        "A versatile To-Do List app with an exercise section and a notes feature for organizing tasks.",
       link: "https://github.com/abdullah222888/To-Do-List",
-    },
-    {
-      image: "logo_transparent.png",
-      name: "Project 4",
-      description:
-        "This is a detailed description for Project 4. Mention the team members involved, the timeline, and the feedback received.",
-      link: "https://github.com/user/project-4",
-    },
-    {
-      image: "https://via.placeholder.com/150",
-      name: "Project 5",
-      description:
-        "This is a detailed description for Project 5. Highlight the key features, the functionality, and the impact of the project.",
-      link: "https://github.com/user/project-5",
-    },
-    {
-      image: "https://via.placeholder.com/150",
-      name: "Project 6",
-      description:
-        "This is a detailed description for Project 6. Provide an overview of the project goals, the execution, and the final presentation.",
-      link: "https://github.com/user/project-6",
     },
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            align="center"
-            gutterBottom
-            sx={{ fontSize: "40px", fontWeight: "800" }}
-          >
-            PROJECTS
-          </Typography>
-        </Grid>
-        {projectData.map((project, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <ProjectCard>
-              <ProjectImage image={project.image} alt={project.name} />
-              <ProjectCardContent>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ fontSize: "30px" }}
-                >
-                  {project.name}
-                </Typography>
-                <Typography variant="body2">{project.description}</Typography>
-                <ProjectButton
-                  variant="contained"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Link
-                </ProjectButton>
-              </ProjectCardContent>
-            </ProjectCard>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      viewport={{ once: false, amount: 0.3 }}
+    >
+      <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Grid container spacing={4} justifyContent="center">
+          <Grid item xs={12}>
+            <Typography
+              variant="h4"
+              align="center"
+              gutterBottom
+              sx={{ fontSize: "40px", fontWeight: "800" }}
+            >
+              PROJECTS
+            </Typography>
           </Grid>
-        ))}
-      </Grid>
-    </Container>
+          {projectData.map((project, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <ProjectCard>
+                <ProjectImage image={project.image} alt={project.name} />
+                <ProjectCardContent>
+                  <Typography variant="h6" component="div">
+                    {project.name}
+                  </Typography>
+                  <Typography variant="body2">{project.description}</Typography>
+                  <Box sx={{ mt: 2 }}>
+                    <ProjectButton
+                      variant="contained"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Link
+                    </ProjectButton>
+                    <ProjectButton variant="contained">Read More</ProjectButton>
+                  </Box>
+                </ProjectCardContent>
+              </ProjectCard>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </motion.div>
   );
 };
 
