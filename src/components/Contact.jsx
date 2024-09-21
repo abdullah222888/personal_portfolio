@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-
 import "./Contact.css";
 
 const Contact = () => {

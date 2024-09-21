@@ -25,7 +25,6 @@ const Navbar = () => {
     { text: "EDUCATION", link: "/education" },
     { text: "PROJECTS", link: "/projects" },
     { text: "CONTACT", link: "/contact" },
-    { text: "SKILLS", link: "/skills" },
   ];
 
   return (

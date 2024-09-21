@@ -6,7 +6,6 @@ import Contact from './components/Contact';
 import Education from './components/Education';
 import Services from './components/Services';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           <Route path='/education' element={<Education />} />
           <Route path='/services' element={<Services />} />
           <Route path='/projects' element={<Projects />} />
-          <Route path='/skills' element={<Skills />} />
         </Route>
       </Routes>
     </Router>
