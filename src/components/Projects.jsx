@@ -14,8 +14,8 @@ import { motion } from "framer-motion";
 
 const ProjectCard = styled(Card)(({ theme }) => ({
   position: "relative",
-  width: "100%", // Full width of the container
-  maxWidth: "540px", // Maximum width for larger screens
+  width: "100%",
+  maxWidth: "100%",
   borderRadius: "10px",
   overflow: "hidden",
   borderColor: "#00ffee",
@@ -31,17 +31,19 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   },
 }));
 
+// Ensure the image takes up full width and maintains its aspect ratio
 const ProjectImage = styled(CardMedia)({
-  height: "200px", // Adjust height to fit within the card
   width: "100%",
-  objectFit: "cover", // Ensure the image covers the card area without distortion
+  height: "auto", // Allow the height to adjust automatically based on the image
+  objectFit: "contain", // Contain the image without cropping
+  aspectRatio: "16/9", // Ensures the aspect ratio stays consistent
 });
 
 const ProjectCardContent = styled(CardContent)(({ theme }) => ({
   padding: "1rem",
   backgroundColor: "rgba(0, 0, 0, 0.7)",
   color: "white",
-  opacity: 0, // Initially hidden
+  opacity: 0,
   transition: "opacity 0.3s ease-in-out",
   position: "absolute",
   bottom: 0,
@@ -51,7 +53,7 @@ const ProjectCardContent = styled(CardContent)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "flex-end", // Align content at the bottom
   "&:hover": {
-    opacity: 1, // Show on hover
+    opacity: 1,
   },
 }));
 
@@ -112,7 +114,11 @@ const Projects = () => {
           {projectData.map((project, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <ProjectCard>
-                <ProjectImage image={project.image} alt={project.name} />
+                <ProjectImage
+                  component="img"
+                  image={project.image}
+                  alt={project.name}
+                />
                 <ProjectCardContent>
                   <Typography variant="h6" component="div">
                     {project.name}
